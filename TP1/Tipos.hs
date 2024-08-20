@@ -9,5 +9,5 @@ module Tipos
         type Departamento = String
         type Nombre = String
         
-duplicado :: Eq a => a -> [a] -> Bool
-duplicado a xs = elem a xs
+yaExiste :: Eq a => a -> [a] -> Bool
+yaExiste a xs = elem a xs
