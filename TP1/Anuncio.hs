@@ -26,7 +26,9 @@ module Anuncio (Anuncio, nuevoA, nombreA, duracionA, departamentosA, agregarA, s
         |otherwise =  Anu nombre (agregar_depto:departamento) duracion
 
     sacarA :: Departamento -> Anuncio -> Anuncio    -- permite quitarle un departamento a un anuncio
-    sacarA sacar_depto (Anu nombre departamento duracion) = Anu nombre (filter(/= sacar_depto) departamento) duracion
-
+    sacarA sacar_depto (Anu nombre departamento duracion)
+        |yaExiste sacar_depto departamento = Anu nombre (filter(/= sacar_depto) departamento) duracion
+        |otherwise = (Anu nombre departamento duracion)
+        
     aplicaA :: [ Departamento ] -> Anuncio -> Bool  -- responde si un anuncion debe emitirse para alguno de los departamentos consultados
     aplicaA deptos (Anu _ departamentos _) = any (`elem` departamentos) deptos
