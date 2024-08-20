@@ -8,3 +8,6 @@ module Tipos
         type Duracion = Int
         type Departamento = String
         type Nombre = String
+        
+duplicado :: Eq a => a -> [a] -> Bool
+duplicado a xs = elem a xs
