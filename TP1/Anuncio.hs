@@ -21,7 +21,9 @@ module Anuncio (Anuncio, nuevoA, nombreA, duracionA, departamentosA, agregarA, s
     departamentosA (Anu _ departamentos _) = departamentos
 
     agregarA :: Departamento -> Anuncio -> Anuncio -- permite asignar un departamento a un anuncio
-    agregarA agregar_depto (Anu nombre departamento duracion) = Anu nombre (agregar_depto:departamento) duracion
+    agregarA agregar_depto (Anu nombre departamento duracion)
+        |duplicado agregar_depto departamento = (Anu nombre departamento duracion)
+        |otherwise =  Anu nombre (agregar_depto:departamento) duracion
 
     sacarA :: Departamento -> Anuncio -> Anuncio    -- permite quitarle un departamento a un anuncio
     sacarA sacar_depto (Anu nombre departamento duracion) = Anu nombre (filter(/= sacar_depto) departamento) duracion
