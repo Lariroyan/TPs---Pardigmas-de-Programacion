@@ -9,5 +9,3 @@ module Tipos
         type Departamento = String
         type Nombre = String
         
-yaExiste :: Eq a => a -> [a] -> Bool
-yaExiste a xs = elem a xs
