@@ -20,15 +20,15 @@ module Anuncio (Anuncio, nuevoA, nombreA, duracionA, departamentosA, agregarA, s
     departamentosA :: Anuncio -> [ Departamento ]   -- dado un anuncio retorna los departamentos que le fueron asociados
     departamentosA (Anu _ departamentos _) = departamentos
 
-    agregarA :: Departamento -> Anuncio -> Anuncio -- permite asignar un departamento a un anuncio
-    agregarA agregar_depto (Anu nombre departamento duracion)
-        |yaExiste agregar_depto departamento = (Anu nombre departamento duracion)
-        |otherwise =  Anu nombre (agregar_depto:departamento) duracion
+agregarA :: Departamento -> Anuncio -> Anuncio -- permite asignar un departamento a un anuncio
+agregarA addDept (Anu nombre departamento duracion)
+    | elem addDept departamento = error "El departamento ya esta asociado con el anuncio"
+    | otherwise = Anu nombre (addDept: departamento) duracion
 
-    sacarA :: Departamento -> Anuncio -> Anuncio    -- permite quitarle un departamento a un anuncio
-    sacarA sacar_depto (Anu nombre departamento duracion)
-        |yaExiste sacar_depto departamento = Anu nombre (filter(/= sacar_depto) departamento) duracion
-        |otherwise = (Anu nombre departamento duracion) --o un aviso para el usuario
+sacarA :: Departamento -> Anuncio -> Anuncio    -- permite quitarle un departamento a un anuncio
+sacarA removeDept (Anu nombre departamento duracion)
+    | not (elem removeDept departamento) = error "El departamento no esta asociado con el anuncio"
+    | otherwise = Anu nombre (filter (/= removeDept) departamento) duracion
         
     aplicaA :: [ Departamento ] -> Anuncio -> Bool  -- responde si un anuncion debe emitirse para alguno de los departamentos consultados
     aplicaA deptos (Anu _ departamentos _) = any (`elem` departamentos) deptos
