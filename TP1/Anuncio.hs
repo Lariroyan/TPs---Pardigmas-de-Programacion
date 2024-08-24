@@ -9,7 +9,10 @@ import Tipos
 data Anuncio = Anu Nombre [ Departamento ] Duracion deriving (Eq, Show, Ord)
 
 nuevoA :: Nombre -> Duracion -> Anuncio         -- dado un nombre y una duracion en segundos retorna un nuevo Anuncio
-nuevoA nombre duracion = Anu nombre [] duracion
+nuevoA nombre duracion
+    | null nombre = error "El nombre del anuncio no puede estar vacio"
+    | duracion <= 0 = error "La duracion no debe ser negativa"
+    | otherwise = Anu nombre [] duracion
 
 nombreA :: Anuncio -> Nombre                    -- dado un anuncio retorna su nombre
 nombreA (Anu nombre _ _) = nombre
