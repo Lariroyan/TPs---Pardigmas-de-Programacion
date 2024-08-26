@@ -39,5 +39,5 @@ sacarDepartamentoF removeDep (FS departamentos anuncios)
     | otherwise = FS (filter (/= removeDep) departamentos) anuncios
     
  
-   anunciosParaF :: [Departamento] -> FilesSystem -> [Anuncio]        -- entrega los anuncios a emitir para un conjunto de departamentos
-   anunciosParaF deptos (FS _ anuncios) = filter (aplicaA deptos) anuncios
+ anunciosParaF :: [Departamento] -> FilesSystem -> [Anuncio]        -- entrega los anuncios a emitir para un conjunto de departamentos
+ anunciosParaF deptos (FS _ anuncios) = filter (aplicaA deptos) anuncios
