@@ -29,7 +29,7 @@ showP (Pro fs deptos index)
         | otherwise = validAnuncios !! index
          where
              anuncios = anunciosF fs
-             validAnuncios = filter (`aplicaA` deptos) anuncios
+             validAnuncios = filter (aplicaA deptos) anuncios
     
 avanzarP :: Prompter -> Prompter                       -- pasa al siguiente anuncio
 avanzarP (Pro fs deptos index) 
@@ -42,4 +42,4 @@ avanzarP (Pro fs deptos index)
 duracionP :: Prompter -> Duracion                      -- indica la duracion total de los anuncios configurados  
 duracionP (Pro fs deptos _) = sum (map duracionA validAnuncios)
      where
-      validAnuncios = filter (`aplicaA` deptos) (anunciosF fs)
+      validAnuncios = filter (aplicaA deptos) (anunciosF fs)
