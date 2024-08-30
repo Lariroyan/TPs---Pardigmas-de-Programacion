@@ -40,7 +40,7 @@ fileSystem5 = agregarDepartamentoF "Electrónica" fileSystem4
 fileSystem6 = agregarDepartamentoF "Ropa" fileSystem5
 fileSystem7 = agregarDepartamentoF "Hogar" fileSystem6
 
-testAnuncio = [
+testP = [
             -- testeos para Anuncio
             testF (nuevoA "" 30),
             testF (nuevoA "Anuncio" (-1)),
@@ -59,7 +59,7 @@ testAnuncio = [
             -- testeos para FileSystem
             anunciosParaF [] fileSystem7 == [],
             testF (sacarAnuncioF (nuevoA "NoExiste" 10) fileSystem7),
-            testF (sacarDepartamentoF "NoExistente" fileSystem7 == fileSystem7),
+            testF (sacarDepartamentoF "NoExiste" fileSystem7 == fileSystem7),
             not (testF (agregarAnuncioF anuncioDuplicado fileSystem4)), 
             testF (sacarAnuncioF (nuevoA "Inexistente" 10) fileSystem4),  
             departamentosF fileSystem7 == ["Hogar", "Ropa", "Electrónica"],
@@ -67,7 +67,7 @@ testAnuncio = [
             anunciosF fileSystem7 == [anuncio3ConDepto, anuncio2ConDepto, anuncio1ConDepto],
             anunciosF (sacarAnuncioF anuncio1ConDepto fileSystem7) == [anuncio3ConDepto, anuncio2ConDepto],
             anunciosParaF ["Hogar", "Electrónica"] fileSystem7 == [anuncio3ConDepto,anuncio1ConDepto],
-            anunciosParaF ["NoExistente"] fileSystem7 == []
+            anunciosParaF ["NoExiste"] fileSystem7 == []
             ]
 allTests :: [Bool]
-allTests = testAnuncio
+allTests = testP
