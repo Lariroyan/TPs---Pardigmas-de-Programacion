@@ -15,27 +15,26 @@ departamentosF (FS departamentos _) = departamentos
 anunciosF :: FileSystem -> [ Anuncio ]                            -- dado un FileSystem retorna los anuncios que incluye
 anunciosF (FS _ anuncios) = anuncios 
     
-  --consultar que debo conciderar como duplicado
 agregarAnuncioF :: Anuncio -> FileSystem -> FileSystem            -- permite agregar un anuncio  
 agregarAnuncioF anuncio (FS departamentos anuncios) 
-        |anuncio `elem` anuncios = FS departamentos anuncios
+        |anuncio `elem` anuncios = error "El anuncio ya esta asociado al filesystem"
         | otherwise = FS departamentos (anuncio:anuncios)
 
 sacarAnuncioF :: Anuncio -> FileSystem -> FileSystem              -- permite eliminar un anuncio
 sacarAnuncioF deleteAn (FS departamentos anuncios)
-    | not (deleteAn `elem` anuncios) = FS departamentos anuncios 
+    | not (deleteAn `elem` anuncios) = error "El anuncio no esta asociado al filesystem" 
     | otherwise = FS departamentos (filter (/= deleteAn) anuncios)
 
 agregarDepartamentoF :: Departamento -> FileSystem -> FileSystem  -- permite agregar un departamento
 agregarDepartamentoF addDept (FS departamentos anuncios)
-    | addDept `elem` departamentos = FS departamentos anuncios  -- o dejar un mensaje de error (CONSULTAR)
+    | addDept `elem` departamentos = error "El departamento ya esta en el FileSystem"  
     | otherwise = FS (addDept : departamentos) anuncios
 
 -- Que pasa si el dep esta asociado a 2 anuncios? 
 -- actualizar lista de los anuncios que estaban asoc a ese depto?
 sacarDepartamentoF :: Departamento -> FileSystem -> FileSystem    -- permite eliminar un departamento
 sacarDepartamentoF removeDep (FS departamentos anuncios)
-    | not (removeDep `elem` departamentos) = FS departamentos anuncios  -- (lo mismo, CONSULTAR)
+    | not (removeDep `elem` departamentos) = error "El departamento no esta en el FileSystem" 
     | otherwise = FS (filter (/= removeDep) departamentos) anuncios
     
  
