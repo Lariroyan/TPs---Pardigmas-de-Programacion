@@ -26,10 +26,13 @@ fileSystem5 = agregarDepartamentoF "Electrónica" fileSystem4
 fileSystem6 = agregarDepartamentoF "Ropa" fileSystem5
 fileSystem7 = agregarDepartamentoF "Hogar" fileSystem6
 
--- Tests para funciones de Anuncio
 testAnuncio = [
     nombreA anuncio1 == "Anuncio1",
     duracionA anuncio2 == 45,
+    nombreA (nuevoA "AnuncioNuevo" 30) == "AnuncioNuevo",
+    duracionA (nuevoA "AnuncioNuevo" 30) == 30,
+    departamentosA (agregarA "Electrónica" anuncio1) == ["Electrónica"],
+    departamentosA (sacarA "Electrónica" anuncio1ConDepto) == [],
     departamentosA anuncio1ConDepto == ["Electrónica"],
     aplicaA ["Electrónica"] anuncio1ConDepto == True,
     aplicaA ["Ropa"] anuncio1ConDepto == False
@@ -39,8 +42,17 @@ testAnuncio = [
 testFileSystem = [
     departamentosF fileSystem7 == ["Hogar", "Ropa", "Electrónica"],
     anunciosF fileSystem4 == [anuncio3ConDepto, anuncio2ConDepto, anuncio1ConDepto],
-    anunciosParaF ["Electrónica"] fileSystem7 == [anuncio1ConDepto]
+    anunciosParaF ["Electrónica"] fileSystem7 == [anuncio1ConDepto],
+    --anunciosF (agregarAnuncioF anuncio1ConDepto fileSystem4) == anunciosF fileSystem4,
+    departamentosF (agregarDepartamentoF "Electrónica" fileSystem7) == ["Hogar", "Ropa", "Electrónica"],
+    anunciosF (sacarAnuncioF anuncio1ConDepto fileSystem4) == [anuncio3ConDepto, anuncio2ConDepto],
+    --departamentosF (sacarDepartamentoF "Electrónica" fileSystem7) == ["Hogar", "Ropa"],
+    --anunciosF (sacarAnuncioF anuncio1 fileSystem4) == anunciosF fileSystem4,
+    departamentosF (sacarDepartamentoF "Deportes" fileSystem7) == departamentosF fileSystem7,
+    anunciosParaF ["Deportes"] (agregarAnuncioF (agregarA "Deportes" anuncio1) fileSystem7) == [],
+    anunciosF (sacarAnuncioF anuncio1ConDepto fileSystem7) == [anuncio3ConDepto, anuncio2ConDepto],
+    length (anunciosF (sacarAnuncioF anuncio1ConDepto fileSystem7)) == 2
     ]
--- Lista de todos los tests
+
 allTests :: [Bool]
 allTests = testAnuncio ++ testFileSystem
