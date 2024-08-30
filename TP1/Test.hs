@@ -25,7 +25,7 @@ anuncioDuplicado = nuevoA "Anuncio1" 30
 anuncio1ConDepto = agregarA "Electrónica" anuncio1
 anuncio2ConDepto = agregarA "Ropa" anuncio2
 anuncio3ConDepto = agregarA "Hogar" anuncio3
-
+anuncioDuplicadoConDeptos = agregarA "Electrónica" anuncioDuplicado
 
 -- Crear un FileSystem vacío
 fileSystem1 = nuevoF
@@ -56,18 +56,22 @@ testP = [
             aplicaA ["Electrónica"] anuncio1ConDepto == True,
             aplicaA ["Ropa"] anuncio1ConDepto == False,
 
-            -- testeos para FileSystem
+            -- Testeos para FileSystem
+            
             anunciosParaF [] fileSystem7 == [],
             testF (sacarAnuncioF (nuevoA "NoExiste" 10) fileSystem7),
             testF (sacarDepartamentoF "NoExiste" fileSystem7 == fileSystem7),
-            not (testF (agregarAnuncioF anuncioDuplicado fileSystem4)), 
-            testF (sacarAnuncioF (nuevoA "Inexistente" 10) fileSystem4),  
-            departamentosF fileSystem7 == ["Hogar", "Ropa", "Electrónica"],
-            testF (departamentosF (agregarDepartamentoF "Electrónica" fileSystem7) == ["Hogar", "Ropa", "Electrónica"]),
-            anunciosF fileSystem7 == [anuncio3ConDepto, anuncio2ConDepto, anuncio1ConDepto],
+            testF (agregarAnuncioF anuncioDuplicadoConDeptos fileSystem4), 
+            departamentosF (sacarDepartamentoF "Hogar" fileSystem7) == ["Ropa", "Electrónica"],
+            departamentosF (agregarDepartamentoF "Deportes" fileSystem7) == ["Deportes","Hogar", "Ropa", "Electrónica"],
+            testF (agregarDepartamentoF "Hogar" fileSystem7),
             anunciosF (sacarAnuncioF anuncio1ConDepto fileSystem7) == [anuncio3ConDepto, anuncio2ConDepto],
-            anunciosParaF ["Hogar", "Electrónica"] fileSystem7 == [anuncio3ConDepto,anuncio1ConDepto],
-            anunciosParaF ["NoExiste"] fileSystem7 == []
+            anunciosParaF ["Hogar", "Electrónica"] fileSystem7 == [anuncio3ConDepto, anuncio1ConDepto],
+            anunciosParaF ["Deportes"] (agregarAnuncioF (agregarA "Deportes" anuncio1) fileSystem7) == [(agregarA "Deportes" anuncio1)],
+            anunciosParaF ["Hogar"] fileSystem7 == [anuncio3ConDepto],
+            anunciosParaF ["NoExiste"] fileSystem7 == [],
+            length (anunciosF (sacarAnuncioF anuncio1ConDepto fileSystem7)) == 2
+            
             ]
 allTests :: [Bool]
 allTests = testP
