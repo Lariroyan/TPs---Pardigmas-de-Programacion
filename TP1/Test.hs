@@ -40,6 +40,9 @@ fileSystem5 = agregarDepartamentoF "Electrónica" fileSystem4
 fileSystem6 = agregarDepartamentoF "Ropa" fileSystem5
 fileSystem7 = agregarDepartamentoF "Hogar" fileSystem6
 
+prompter1 = nuevoP fileSystem7
+prompter1ConDeptos = configurarP prompter1 ["Hogar","Ropa","Electrónica"]
+
 testP = [
             -- testeos para Anuncio
             testF (nuevoA "" 30),
