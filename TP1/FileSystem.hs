@@ -30,8 +30,6 @@ agregarDepartamentoF addDept (FS departamentos anuncios)
     | addDept `elem` departamentos = error "El departamento ya esta en el FileSystem"  
     | otherwise = FS (addDept : departamentos) anuncios
 
--- Que pasa si el dep esta asociado a 2 anuncios? 
--- actualizar lista de los anuncios que estaban asoc a ese depto?
 sacarDepartamentoF :: Departamento -> FileSystem -> FileSystem    -- permite eliminar un departamento
 sacarDepartamentoF removeDep (FS departamentos anuncios)
     | not (removeDep `elem` departamentos) = error "El departamento no esta en el FileSystem" 
