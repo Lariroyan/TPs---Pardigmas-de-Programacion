@@ -3,7 +3,14 @@ package tree;
 import java.util.List;
 
 public class Tree {
+    private Object value;
+    private Tree left;
+    private Tree right;
+
     public Tree( Object a ) {
+        this.value = a;
+        this.left = null;
+        this.right = null;
     }
 
     public List dfs() {
@@ -15,22 +22,25 @@ public class Tree {
     }
 
     public Tree atLeft( Tree b ) {
-        return null;
+        this.left = b;
+        return this;
     }
 
     public Tree atRight( Tree b ) {
-        return null;
+        this.right = b;
+        return this;
     }
 
     public Tree right() {
-        return null;
+        return this.right;
     }
 
     public Tree left() {
-        return null;
+        return this.left;
     }
 
     public Object carga() {
-        return null;
+        return this.value;
     }
 }
+
