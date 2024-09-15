@@ -25,13 +25,10 @@ public class Tree {
             return;
         }
         result.add(node.carga);
-        if (node.left != null) {
-            dfsAuxiliar(node.left, result);
-        }
-        if (node.right != null) {
-            dfsAuxiliar(node.right, result);
-        }
+        dfsAuxiliar(node.left, result);
+        dfsAuxiliar(node.right, result);
     }
+
 
     public List bfs() {
         List result = new ArrayList();
@@ -52,6 +49,7 @@ public class Tree {
         }
 
         return result;
+    }
     public Tree atLeft( Tree b ) {
         this.left = b;
         return this;
