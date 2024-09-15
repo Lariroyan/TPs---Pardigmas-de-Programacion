@@ -1,10 +1,10 @@
 package tree;
 
-import java.util.List;
+import java.util.*;
 
 public class Tree {
     //private List<Object> listElements = new ArrayList<>();
-    
+
     private Object carga;
     private Tree left;
     private Tree right;
@@ -32,11 +32,27 @@ public class Tree {
             dfsAuxiliar(node.right, result);
         }
     }
-    
-    public List bfs() {
-        return null;
-    }
 
+    public List<Object> bfs() {
+        List<Object> result = new ArrayList<>();
+        Queue<Tree> queue = new LinkedList<>();
+        queue.add(this);
+
+        while (!queue.isEmpty()) {
+            Tree node = queue.poll();
+            if (node != null) {
+                result.add(node.carga()); // Añadir el nodo actual
+                if (node.left() != null) {
+                    queue.add(node.left()); // Añadir el hijo izquierdo a la cola
+                }
+                if (node.right() != null) {
+                    queue.add(node.right()); // Añadir el hijo derecho a la cola
+                }
+            }
+        }
+
+        return result;
+    }
     public Tree atLeft( Tree b ) {
         this.left = b;
         return this;
@@ -47,32 +63,25 @@ public class Tree {
         return this;
     }
 
-    public Tree right() {
-        if (this.right == null) {
-            throw new RuntimeException("Nada en el nodo derecho");
+    public Tree left() {
+        if (left == null) {
+            throw new RuntimeException("Nada a la siniestra!");
         }
-        return this.right;
+        return left;
     }
 
-    public Tree left() {
-        if (this.left == null) {
-            throw new RuntimeException("Nada en el nodo izquierdo");
+    public Tree right() {
+        if (right == null) {
+            throw new RuntimeException("Nada a la diestra!");
         }
-        return this.left;
+        return right;
     }
 
     public Object carga() {
         return this.carga;
     }
 
-    // metodos agregados que capaz sirva wu
-    public void addLeft(Tree node) {
-        this.left = node;
-    }
-    public void addRight(Tree node) {
-        this.right = node;
-    }
-    //un public -> tiene hijos? es hoja? 
+
+
 
 }
-
