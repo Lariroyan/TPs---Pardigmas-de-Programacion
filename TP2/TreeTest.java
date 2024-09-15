@@ -1,5 +1,4 @@
 package tree;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.List;
@@ -162,6 +161,6 @@ public class TreeTest {
 
     private static void assertThrowsLike( String expectedMsg, Executable expression ) {
         assertEquals( expectedMsg,
-                      assertThrows( RuntimeException.class, expression ).getMessage() );
+                assertThrows( RuntimeException.class, expression ).getMessage() );
     }
 }
