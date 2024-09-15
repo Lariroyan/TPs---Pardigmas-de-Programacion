@@ -33,26 +33,25 @@ public class Tree {
         }
     }
 
-    public List<Object> bfs() {
-        List<Object> result = new ArrayList<>();
-        Queue<Tree> queue = new LinkedList<>();
+    public List bfs() {
+        List result = new ArrayList();
+        Queue<Tree> queue = new LinkedList();
         queue.add(this);
 
         while (!queue.isEmpty()) {
             Tree node = queue.poll();
             if (node != null) {
-                result.add(node.carga()); // Añadir el nodo actual
-                if (node.left() != null) {
-                    queue.add(node.left()); // Añadir el hijo izquierdo a la cola
+                result.add(node.carga); // Añadir el nodo actual
+                if (node.left != null) {
+                    queue.add(node.left); // Añadir el hijo izquierdo a la cola
                 }
-                if (node.right() != null) {
-                    queue.add(node.right()); // Añadir el hijo derecho a la cola
+                if (node.right != null) {
+                    queue.add(node.right); // Añadir el hijo derecho a la cola
                 }
             }
         }
 
         return result;
-    }
     public Tree atLeft( Tree b ) {
         this.left = b;
         return this;
