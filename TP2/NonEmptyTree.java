@@ -12,8 +12,8 @@ public class NonEmptyTree extends TreeState {
     }
 
     @Override
-    public List<Object> dfs() {
-        List<Object> result = new ArrayList<>();
+    public List dfs() {
+        List result = new ArrayList();
         dfsAuxiliar(this, result);
         return result;
     }
@@ -30,8 +30,8 @@ public class NonEmptyTree extends TreeState {
     }
 
     @Override
-    public List<Object> bfs() {
-        List<Object> result = new ArrayList<>();
+    public List bfs() {
+        List result = new ArrayList();
         Queue<TreeState> queue = new LinkedList<>();
         queue.add(this);
 
