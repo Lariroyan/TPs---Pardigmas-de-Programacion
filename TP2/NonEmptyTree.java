@@ -10,23 +10,31 @@ public class NonEmptyTree extends TreeState {
         this.left = left;
         this.right = right;
     }
-
+    @Override
+    public void traverse(List result) {
+        result.add(carga);
+        // ac hace recorrido in orden
+        left.traverse(result);
+        right.traverse(result);
+    }
+    @Override
+    public void traverseBFS(Queue<TreeState> queue, List result) {
+        //result.add(this.carga);
+        //list carga -> lista de resultados
+        result.add(carga);
+        queue.add(left);
+        queue.add(right);
+    }
     @Override
     public List dfs() {
-        List result = new ArrayList();
+        List result = new ArrayList<>();
         dfsAuxiliar(this, result);
         return result;
     }
-
-    private void dfsAuxiliar(TreeState node, List<Object> result) {
-        if (node == null) return;
-        result.add(node.carga());
-        if (node.left() instanceof NonEmptyTree) {
-            dfsAuxiliar(node.left(), result);
-        }
-        if (node.right() instanceof NonEmptyTree) {
-            dfsAuxiliar(node.right(), result);
-        }
+    private void dfsAuxiliar(NonEmptyTree node, List result) {
+        result.add(node.carga);
+        node.left.traverse(result);
+        node.right.traverse(result);
     }
 
     @Override
@@ -34,16 +42,9 @@ public class NonEmptyTree extends TreeState {
         List result = new ArrayList();
         Queue<TreeState> queue = new LinkedList<>();
         queue.add(this);
-
         while (!queue.isEmpty()) {
             TreeState node = queue.poll();
-            result.add(node.carga());
-            if (node.left() instanceof NonEmptyTree) {
-                queue.add(node.left());
-            }
-            if (node.right() instanceof NonEmptyTree) {
-                queue.add(node.right());
-            }
+            node.traverseBFS(queue, result);
         }
         return result;
     }
