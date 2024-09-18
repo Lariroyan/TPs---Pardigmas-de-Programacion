@@ -28,11 +28,19 @@ public class Tree {
     }
 
     public Tree left() {
-        return new Tree(state.left().carga());
+        TreeState leftState = state.left();
+        if (leftState instanceof EmptyTree) {
+            throw new RuntimeException("Nada a la siniestra!");
+        }
+        return new Tree(leftState.carga());
     }
 
     public Tree right() {
-        return new Tree(state.right().carga());
+        TreeState rightState = state.right();
+        if (rightState instanceof EmptyTree) {
+            throw new RuntimeException("Nada a la diestra!");
+        }
+        return new Tree(rightState.carga());
     }
 
     public Object carga() {
@@ -41,6 +49,10 @@ public class Tree {
 
 
 }
+
+
+
+
 
 
 
