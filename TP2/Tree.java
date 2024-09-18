@@ -19,11 +19,11 @@ public class Tree {
         return this;
     }
 
-    public List<Object> dfs() {
+    public List dfs() {
         return state.dfs();
     }
 
-    public List<Object> bfs() {
+    public List bfs() {
         return state.bfs();
     }
 
@@ -53,7 +53,3 @@ public class Tree {
 
 
 
-
-
-
-}
