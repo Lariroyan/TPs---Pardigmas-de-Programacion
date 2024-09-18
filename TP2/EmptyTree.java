@@ -6,7 +6,15 @@ public class EmptyTree extends TreeState {
     }
 
     @Override
-    public List<Object> bfs() {
+    public void traverse(List result) {
+    }
+
+    @Override
+    public void traverseBFS(Queue<TreeState> queue, List result) {
+    }
+
+    @Override
+    public List bfs() {
         return new ArrayList<>();
     }
 
