@@ -6,4 +6,6 @@ public abstract class TreeState {
     public abstract TreeState left();
     public abstract TreeState right();
     public abstract Object carga();
+    public abstract void traverse(List result);
+    public abstract void traverseBFS(Queue<TreeState> queue, List result);
 }
