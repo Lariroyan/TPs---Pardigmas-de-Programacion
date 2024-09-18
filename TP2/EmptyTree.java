@@ -13,17 +13,16 @@ public class EmptyTree extends TreeState {
 
     @Override
     public TreeState left() {
-        throw new Error("Nada a la siniestra!");
+        throw new RuntimeException("Nada a la siniestra!");
     }
 
     @Override
     public TreeState right() {
-        throw new Error("Nada a la diestra!");
+        throw new RuntimeException("Nada a la diestra!");
     }
 
     @Override
     public Object carga() {
-          throw new Error("No hya carga");
+        throw new RuntimeException("No hay carga");
     }
-
 }
