@@ -12,14 +12,6 @@ public class RamaVacia extends Rama{
         throw new RuntimeException("Nada a la diestra!");
     }
 
-    public Rama right(Rama rama){
-        throw new RuntimeException("Nada a la diestra!");
-
-    }
-
-    public Rama left(Rama rama) {
-        throw new RuntimeException("Nada a la siniestra!");
-    }
 
     @Override
     public Object carga() {
