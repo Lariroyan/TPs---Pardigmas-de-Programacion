@@ -27,6 +27,8 @@ public class Tree {
             Rama node = queue.poll();
             node.bfs(queue, result);
         }
+        return result;
+    }
 
 public Tree atLeft(Tree b) {
         this.root = this.root.atLeft(b.root);
