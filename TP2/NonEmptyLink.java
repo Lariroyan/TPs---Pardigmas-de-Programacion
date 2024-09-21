@@ -19,7 +19,6 @@ public class NonEmptyLink extends Link {
 
 
     public void addToQueue(Queue<Tree> queue) {
-        // Añadir el árbol a la cola si no es nulo
         queue.add(this.tree);
     }
 }
