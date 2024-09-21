@@ -15,9 +15,9 @@ public class Tree {
 
     public List<Object> dfs() {
         List<Object> result = new ArrayList<>();
-        result.add(this.carga); // Visitar la raíz.
-        result.addAll(left.dfs()); // Recorrer la rama izquierda.
-        result.addAll(right.dfs()); // Recorrer la rama derecha.
+        result.add(this.carga); 
+        result.addAll(left.dfs()); 
+        result.addAll(right.dfs()); 
         return result;
     }
 
@@ -28,9 +28,7 @@ public class Tree {
 
         while (!queue.isEmpty()) {
             Tree node = queue.poll();
-            result.add(node.carga); // Añadir el nodo actual a la lista de resultados
-
-            // En lugar de usar la recursión, simplemente añadimos los hijos a la cola
+            result.add(node.carga); 
             node.left.addToQueue(queue);
             node.right.addToQueue(queue);
         }
@@ -48,11 +46,11 @@ public class Tree {
     }
 
     public Tree left() {
-        return left.getTree("siniestra"); // Lanza excepción si es una EmptyLink
+        return left.getTree("siniestra"); 
     }
 
     public Tree right() {
-        return right.getTree("diestra"); // Lanza excepción si es una EmptyLink
+        return right.getTree("diestra"); 
     }
 
     public Object carga() {
