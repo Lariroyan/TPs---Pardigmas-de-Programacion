@@ -1,14 +1,14 @@
 package tree;
 import java.util.*;
-public class NonEmptyLink extends Link {
+public class validLink extends Link {
     private final Tree tree;
 
-    NonEmptyLink(Tree tree) {
+    validLink(Tree tree) {
         this.tree = tree;
     }
 
     @Override
-    Tree getTree(String side) {
+    Tree getSubTree(String side) {
         return this.tree;
     }
 
