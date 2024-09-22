@@ -3,7 +3,7 @@ import java.util.*;
 
 public class EmptyLink extends Link {
     @Override
-    Tree getTree(String side) {
+    Tree getSubTree(String side) {
         throw new RuntimeException("Nada a la " + side + "!");
     }
     @Override
