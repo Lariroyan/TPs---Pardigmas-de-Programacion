@@ -36,21 +36,21 @@ public class Tree {
         return result;
     }
     public Tree atLeft(Tree b) {
-        this.left = new NonEmptyLink(b);
+        this.left = new validLink(b);
         return this;
     }
 
     public Tree atRight(Tree b) {
-        this.right = new NonEmptyLink(b);
+        this.right = new validLink(b);
         return this;
     }
 
     public Tree left() {
-        return left.getTree("siniestra"); 
+        return left.getSubTree("siniestra"); 
     }
 
     public Tree right() {
-        return right.getTree("diestra"); 
+        return right.getSubTree("diestra"); 
     }
 
     public Object carga() {
