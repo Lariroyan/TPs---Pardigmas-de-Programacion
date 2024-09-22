@@ -8,12 +8,12 @@ public class validLink extends Link {
     }
 
     @Override
-    Tree getSubTree(String side) {
+    public Tree getSubTree(String side) {
         return this.tree;
     }
 
     @Override
-    List<Object> dfs() {
+    public List<Object> dfs() {
         return tree.dfs();
     }
 
