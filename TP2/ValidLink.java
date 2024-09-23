@@ -1,9 +1,9 @@
 package tree;
 import java.util.*;
-public class validLink extends Link {
+public class ValidLink extends Link {
     private final Tree tree;
 
-    validLink(Tree tree) {
+    ValidLink(Tree tree) {
         this.tree = tree;
     }
 
