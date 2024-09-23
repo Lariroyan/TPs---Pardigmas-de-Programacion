@@ -36,12 +36,12 @@ public class Tree {
         return result;
     }
     public Tree atLeft(Tree b) {
-        this.left = new validLink(b);
+        this.left = new ValidLink(b);
         return this;
     }
 
     public Tree atRight(Tree b) {
-        this.right = new validLink(b);
+        this.right = new ValidLink(b);
         return this;
     }
 
