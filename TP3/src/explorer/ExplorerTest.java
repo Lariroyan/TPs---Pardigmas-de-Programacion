@@ -42,11 +42,8 @@ public class ExplorerTest {
     @Test void test06MoveToRightFacingNorthAndGoForward() {
         Explorer rover = initializeExplorer().processCommand("rf");
         assertPosition(rover, 1, 0, "East");
-//        assertEquals("East", rover.getDirection());
-//        assertCoordinates(rover, 1, 0);
-
-
     }
+    
     @Test void test07MoveToRightFacingNorthAndGoBackwards() {
         Explorer rover = initializeExplorer().processCommand("rb");
         assertPosition(rover, -1, 0, "East");
