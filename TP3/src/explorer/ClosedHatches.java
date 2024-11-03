@@ -14,11 +14,11 @@ public class ClosedHatches extends HatchState {
     }
 
     public void aspirate(Explorer explorer) {
-        throw new IllegalStateException("Cannot aspirate with upper hatch closed");
+        throw new IllegalStateException(HatchState.errorMessage_AspirateUpperClosed);
     }
 
     public void collectSample(Explorer explorer) {
-        throw new IllegalStateException("Cannot collect sample with lower hatch closed");
+        throw new IllegalStateException(HatchState.errorMessage_CollectSampleLowerClosed);
     }
     public boolean isUpperHatchOpen() {
         return false;
