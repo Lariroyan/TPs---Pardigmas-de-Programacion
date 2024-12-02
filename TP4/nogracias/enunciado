@@ -1,1 +1,8 @@
 
+Se nos pide desarrollar la lógica de una partida del juego No gracias.!
+Al juego le vamos a indicar quién de los jugadores 'paga' o 'toma'. 
+El juego controlará que sólo el jugador de turno pueda jugar mientras el juego esté abierto.
+En cualquier momento se podrá consultar el puntaje de cualquier jugador.
+
+La implementación y sus tests deben ser determinísticos.
+Es requisito cumplir con todos los criterios vistos a lo largo de la cursada.
