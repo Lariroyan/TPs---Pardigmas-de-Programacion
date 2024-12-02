@@ -19,8 +19,7 @@ public class NoGraciasTest {
         game = new NoGracias(crearJugadores("Mila", "Emma", "Lara"), mazo);
     }
 
-    @Test
-    void test00IniciarJuego() {
+    @Test void test00IniciarJuego() {
         game.getJugadores().forEach(jugador -> assertEquals(11, jugador.getFichas()));
     }
 
@@ -39,15 +38,13 @@ public class NoGraciasTest {
         assertThrowsLike("El número de jugadores debe estar entre 3 y 7",
                 () ->  new NoGracias(crearJugadores("Mila", "Emma", "Lara", "Giselle", "Peter", "Julio", "Emilio", "Rocio"), mazo));
     }
-    @Test
-    void test04PagarCartaColocarFicha() {
+    @Test void test04PagarCartaColocarFicha() {
         Jugador jugador1 = game.getJugadores().get(0);
         game.pagarCarta(jugador1);
         assertEquals(10, jugador1.getFichas());
     }
 
-    @Test
-    void test05TomarCartaConFichasAcumuladas() {
+    @Test void test05TomarCartaConFichasAcumuladas() {
         Jugador jugador1 = game.getJugadores().get(0);
         Carta cartaActual = mazo.get(0);
 
@@ -57,7 +54,7 @@ public class NoGraciasTest {
         assertEquals(5, cartaActual.getValor());
         assertEquals(13, jugador1.getFichas());
     }
-    @Test public void test06JugadorFueraDeTurno(){
+    @Test void test06JugadorFueraDeTurno(){
         Jugador jugador2 = game.getJugadores().get(1);
         assertThrowsLike("No es el turno de Emma", () ->  game.pagarCarta(jugador2));
         assertThrowsLike("No es el turno de Emma", () ->  game.tomarCarta(jugador2));
